@@ -1,6 +1,8 @@
 .list {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
+	width: 50%;
+	margin: 0 auto;
 }
 
 .item {
