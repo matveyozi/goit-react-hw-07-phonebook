@@ -3,10 +3,13 @@ import Button from '@mui/material/Button';
 import cssModule from './ContactForm.module.css'
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
+import { useEffect, useState } from 'react';
 
 
  const ContactForm = () => {
-
+	const [isDisabled, setIsDisabled]=useState(true)
+	const [name, setName] = useState('')
+	const [number, setNumber] = useState('')
 	const dispatch = useDispatch();
 
 	const onSubmitForm = e => {
@@ -20,23 +23,41 @@ import { addContact } from 'redux/contactsSlice';
 	  form.reset();
 	};
   
+	const onChangeInput = (e)=> {
+		switch (e.target.name) {
+			case 'name': setName(e.target.value);
+			break;
+			case 'number': setNumber(e.target.value);
+				break;
+			default:
+				
+			return;
+
+			
+		}
+		if (number && name) {
+			setIsDisabled(false);
+		} else setIsDisabled(true);	
+	}
+
+	
+
 	return (
 		<form className={cssModule.form} onSubmit={onSubmitForm} action="">
-			<TextField type='text' 
+			<TextField onChange={onChangeInput} type='text' 
 				
 					pattern=
 					  "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
 				 
 				name='name' id="filled-basic" label="Name" variant="filled" />
 			<TextField type='tel' 
-				
-					
+				onChange={onChangeInput}
 					pattern=
 					  '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}'
 				  
 				name='number' id="filled-basic" label="Number" variant="filled" />
 			
-			<Button type="submit" variant="contained">Add contact</Button>
+			<Button disabled={isDisabled} type="submit" variant="contained">Add contact</Button>
 		</form>
 	)
   }

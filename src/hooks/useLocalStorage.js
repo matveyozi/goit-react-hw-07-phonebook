@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
-export  function useLocalStorage(key, initialState) {
+export function useLocalStorage(key, initialState) {
 	const [state, setState] = useState(
 		() => JSON.parse(localStorage.getItem(key)) ?? initialState
 	);
