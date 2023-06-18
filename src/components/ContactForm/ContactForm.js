@@ -2,15 +2,17 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import cssModule from './ContactForm.module.css'
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
+import { addContact } from 'redux/operations';
 
 
  const ContactForm = () => {
-	const [isDisabled, setIsDisabled]=useState(true)
-	const [name, setName] = useState('')
-	const [number, setNumber] = useState('')
-	const dispatch = useDispatch();
+	 const [isDisabled, setIsDisabled] = useState(true);
+	 const [name, setName] = useState('');
+	 const [number, setNumber] = useState('');
+
+	 
+	 const dispatch = useDispatch();
 
 	const onSubmitForm = e => {
 	  e.preventDefault();
@@ -18,9 +20,10 @@ import { useEffect, useState } from 'react';
 	  const name = e.target.name.value;
 	  const number = e.target.number.value;
   
-	  dispatch(addContact(name, number));
-  
-	  form.reset();
+	  dispatch(addContact({name, number}));
+		
+		form.reset();
+		setIsDisabled(true)
 	};
   
 	const onChangeInput = (e)=> {

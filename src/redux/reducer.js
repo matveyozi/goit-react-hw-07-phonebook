@@ -13,7 +13,7 @@ const persistConfig = {
   key: 'contacts',
   storage,
   whitelist: ['contacts'],
- 
 };
 
 export const appReducer = persistReducer(persistConfig, rootReducer);
+

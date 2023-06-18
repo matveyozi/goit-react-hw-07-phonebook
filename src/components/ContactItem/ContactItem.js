@@ -3,8 +3,7 @@ import Button from '@mui/material/Button';
 
 import cssModlue from './ContactItem.module.css'
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
-
+import { deleteContact } from 'redux/operations';
 
 export default function ContactItem({ contact }) {
 	const dispatch = useDispatch();
