@@ -3,9 +3,9 @@ import cssModlue from './ContactList.module.css'
 import { selectFilteredContacts } from 'redux/selectors';
 import ContactItem from 'components/ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
+
+
 export default function ContactList() {
-
-
 
 	const defaultText = 'Not have a contacts'
 

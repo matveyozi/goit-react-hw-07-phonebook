@@ -6,11 +6,9 @@ import { setStatusFilter } from 'redux/filtersSlice';
 import { selectFilter } from 'redux/selectors';
 
 const Filter = () => {
-	
 	const dispatch = useDispatch();
 	const handleChange = e => {
 		dispatch(setStatusFilter(e.target.value));
-
 	};
 
 	const filter = useSelector(selectFilter);
